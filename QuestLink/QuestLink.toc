@@ -1,0 +1,9 @@
+## Interface: 30300
+## Title: QuestLink
+## Notes: Adds Ascension db link button to the quest frame
+## Author: Anch - Area 52
+## X-Category: UnitFrame
+## DefaultState: enabled
+## Version: 0.2
+
+embeds.xml
