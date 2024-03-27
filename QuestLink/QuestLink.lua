@@ -67,7 +67,14 @@ msg - takes the argument for the /mysticextended command so that the appropriate
 If someone types /mysticextended, bring up the options box
 ]]
 local function SlashCommand(msg)
-    OpenAscensionDBURL("?search="..msg)
+    local _, _, text = string.match(msg, [[|H([^:]*):([^|]*)|h(.*)|h]])
+    if text then
+        text = gsub(text,"%[","")
+        text = gsub(text,"%]","")
+    else
+        text = msg
+    end
+    OpenAscensionDBURL("?search="..text)
 end
 
 function QL:OnEnable()
