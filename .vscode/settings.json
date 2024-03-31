@@ -29,6 +29,7 @@
         "NORMAL_FONT_COLOR",
         "UIErrorsFrame",
         "OpacitySliderFrame",
-        "InterfaceOptions_AddCategory"
+        "InterfaceOptions_AddCategory",
+        "GameTooltip_Hide"
     ]
 }
