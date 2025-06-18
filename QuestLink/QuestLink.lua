@@ -29,7 +29,7 @@ QuestLogFrame:HookScript("OnShow", function(self)
     QuestLogFrame.LinkBtn = CreateFrame("Button", "QuestLogFrameDB", QuestLogFrame, "AscenDBbuttonTemplate")
     local points = {"BOTTOMRIGHT", -90, 14}
     if select(4,GetAddOnInfo("ElvUI")) then
-        points = {"LEFT", -5, 0}
+        points = {"RIGHT", "QuestLogFrameCancelButton", "LEFT", -5, 0}
     end
     QuestLogFrame.LinkBtn:SetPoint(unpack(points))
     QuestLogFrame.LinkBtn:SetText("Open In Db")
