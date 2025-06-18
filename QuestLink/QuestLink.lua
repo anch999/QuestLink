@@ -27,7 +27,11 @@ QuestLogFrame:HookScript("OnShow", function(self)
     if linkButtonLoadedQframe then return end
 
     QuestLogFrame.LinkBtn = CreateFrame("Button", "QuestLogFrameDB", QuestLogFrame, "AscenDBbuttonTemplate")
-    QuestLogFrame.LinkBtn:SetPoint("BOTTOMRIGHT", -90, 14)
+    local points = {"BOTTOMRIGHT", -90, 14}
+    if select(4,GetAddOnInfo("ElvUI")) then
+        points = {"LEFT", -5, 0}
+    end
+    QuestLogFrame.LinkBtn:SetPoint(unpack(points))
     QuestLogFrame.LinkBtn:SetText("Open In Db")
     QuestLogFrame.LinkBtn:Show()
     QuestLogFrame.LinkBtn.tooltipTitle = VIEW_ASCENSION_DB
