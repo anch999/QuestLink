@@ -68,14 +68,20 @@ msg - takes the argument for the /mysticextended command so that the appropriate
 If someone types /mysticextended, bring up the options box
 ]]
 local function SlashCommand(msg)
-    local _, _, text = string.match(msg, [[|H([^:]*):([^|]*)|h(.*)|h]])
-    if text then
-        text = gsub(text,"%[","")
-        text = gsub(text,"%]","")
+    -- taken from https://antifandom.com/wowwiki-archive/wiki/ItemLink
+    local _, _, Color, Ltype, Id, Enchant, Gem1, Gem2, Gem3, Gem4, Suffix, Unique, LinkLvl, reforging, Name = string.find(msg, "|?c?f?f?(%x*)|?H?([^:]*):?(%d+):?(%d*):?(%d*):?(%d*):?(%d*):?(%d*):?(%-?%d*):?(%-?%d*):?(%d*):?(%d*)|?h?%[?([^%[%]]*)%]?|?h?|?r?")
+    if Ltype == "item" or Ltype == "spell" or Ltype == "quest" or Ltype == "achievement" then
+        OpenAscensionDBURL("?"..Ltype.."="..Id)
     else
-        text = msg
+        local _, _, text = string.match(msg, [[|H([^:]*):([^|]*)|h(.*)|h]])
+        if text then
+            text = gsub(text,"%[","")
+            text = gsub(text,"%]","")
+        else
+            text = msg
+        end
+        OpenAscensionDBURL("?search="..text)
     end
-    OpenAscensionDBURL("?search="..text)
 end
 
 function QL:OnEnable()
